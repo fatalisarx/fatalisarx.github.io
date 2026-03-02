@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт компьютеров в Орле | Георгинов Р.В.</title>
+    <style>
+        /* Стили — полностью в духе вашего старого сайта: 
+           понятные, синий цвет, акцент на деталях */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #222;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: #1e3c72;
+            color: white;
+            padding: 20px 0;
+            border-bottom: 5px solid #ffaa00;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .header-contacts {
+            text-align: right;
+        }
+        .header-contacts p {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        .section {
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .section-title {
+            font-size: 2em;
+            color: #1e3c72;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: #ffaa00;
+            margin: 10px auto;
+        }
+
+        /* Блок "Обо мне" с данными */
+        .about-grid {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .about-text {
+            flex: 2;
+            background: #f5f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #ffaa00;
+        }
+        .about-details {
+            flex: 1;
+            background: #f0f0f0;
+            padding: 25px;
+            border-radius: 15px;
+            font-family: monospace;
+            font-size: 0.95em;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .about-details p {
+            margin: 10px 0;
+            border-bottom: 1px dashed #aaa;
+            padding-bottom: 5px;
+        }
+
+        /* Блок с ценами (ваш прайс-лист) */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .price-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .price-card:hover {
+            transform: translateY(-5px);
+            border-color: #1e3c72;
+        }
+        .price-card h3 {
+            color: #1e3c72;
+            margin-top: 0;
+            border-bottom: 2px solid #ffaa00;
+            padding-bottom: 10px;
+        }
+        .price {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ffaa00;
+            text-align: right;
+            margin: 15px 0 0;
+        }
+        .price small {
+            font-size: 0.5em;
+            color: #666;
+            font-weight: normal;
+        }
+
+        /* Формы (заявка и отзыв) */
+        .form-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .form-box {
+            flex: 1 1 300px;
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        .form-box h3 {
+            margin-top: 0;
+            color: #1e3c72;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .btn {
+            background: #1e3c72;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #ffaa00;
+            color: #1e3c72;
+        }
+        .message {
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 5px;
+            display: none;
+        }
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        /* Блок отзывов */
+        .reviews-list {
+            margin-bottom: 40px;
+        }
+        .review-item {
+            background: white;
+            border-left: 4px solid #ffaa00;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .review-item strong {
+            color: #1e3c72;
+            font-size: 1.1em;
+        }
+        .review-item small {
+            color: #777;
+            display: block;
+            margin-top: 5px;
+        }
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-contacts {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>Ремонт компьютеров в Орле</h1>
+                <p>⚡ от 150 рублей ⚡</p>
+            </div>
+            <div class="header-contacts">
+                <p>📞 8 800 200 61 54</p>
+                <p>📱 255 107</p>
+                <p>⏰ Ежедневно 10:00–20:00</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Блок с вашими данными (ИНН и пр.) -->
+        <div class="container section">
+            <h2 class="section-title">Обо мне</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Работаю открыто и честно. Предоставляю сохранную расписку, чек на работы, гарантийный талон и чеки на комплектующие. Цены обсуждаются заранее и не повышаются в процессе.</p>
+                    <p>Выезжаю к вам домой, по возможности не забираю технику. Могу подключиться удаленно. Есть подменный компьютер на время ремонта.</p>
+                    <p><strong>Работаю 365 дней в году.</strong> Да, и на 9 мая тоже. И даже на Новый год.</p>
+                </div>
+                <div class="about-details">
+                    <p><strong>НПД Георгинов Р.В.</strong></p>
+                    <p>ИНН 575108408120</p>
+                    <p>ОГРНИП 318574900040335</p>
+                    <p>📍 г. Орёл</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Блок ПРАЙС-ЛИСТ (ваши услуги с ценами) -->
+        <div class="container section">
+            <h2 class="section-title">Услуги и цены</h2>
+            <div class="price-grid">
+                <div class="price-card">
+                    <h3>Установка Windows</h3>
+                    <p>Выезд, настройка драйверов, установка программ и антивируса.</p>
+                    <p class="price">1 500 ₽</p>
+                </div>
+                <div class="price-card">
+                    <h3>Выезд и диагностика</h3>
+                    <p>Если ремонтируете у меня — диагностика бесплатно.</p>
+                    <p class="price">500 ₽ <small>(или бесплатно)</small></p>
+                </div>
+                <div class="price-card">
+                    <h3>Сборка ПК на заказ</h3>
+                    <p>Подбор деталей, покупка (с чеками), сборка и настройка.</p>
+                    <p class="price">2 500 ₽</p>
+                </div>
+                <div class="price-card">
+                    <h3>Замена комплектующих</h3>
+                    <p>Установка новых или б/у деталей (только работа).</p>
+                    <p class="price">800 ₽</p>
+                </div>
+                <div class="price-card">
+                    <h3>Восстановление информации</h3>
+                    <p>С жестких дисков, флешек, SD-карт.</p>
+                    <p class="price">от 1 000 ₽</p>
+                </div>
+                <div class="price-card">
+                    <h3>Настройка периферии</h3>
+                    <p>Принтер, сканер, роутер и т.д.</p>
+                    <p class="price">700 ₽</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Два блока: ФОРМА ЗАЯВКИ и ФОРМА ОТЗЫВА -->
+        <div class="container section">
+            <h2 class="section-title">Заявка и отзывы</h2>
+            <div class="form-container">
+                <!-- Форма заявки (отправляется на почту) -->
+                <div class="form-box">
+                    <h3>📋 Оставить заявку</h3>
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label for="name">Ваше имя *</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="problem">Опишите проблему</label>
+                            <textarea id="problem" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить заявку</button>
+                        <div id="orderMessage" class="message"></div>
+                    </form>
+                </div>
+
+                <!-- Форма отзыва с проверкой по номеру заявки -->
+                <div class="form-box">
+                    <h3>⭐ Оставить отзыв</h3>
+                    <form id="reviewForm">
+                        <div class="form-group">
+                            <label for="reviewName">Ваше имя *</label>
+                            <input type="text" id="reviewName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewText">Текст отзыва *</label>
+                            <textarea id="reviewText" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderNumber">Номер вашей заявки *</label>
+                            <input type="text" id="orderNumber" placeholder="Например: 2024-05" required>
+                            <small>Номер, который я выдал при обращении</small>
+                        </div>
+                        <button type="submit" class="btn">Добавить отзыв</button>
+                        <div id="reviewMessage" class="message"></div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Список отзывов -->
+            <div style="margin-top: 50px;">
+                <h3 style="color: #1e3c72;">Отзывы клиентов</h3>
+                <div id="reviewsList" class="reviews-list">
+                    <!-- Здесь будут появляться отзывы -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>ИП Георгинов Р.В. | ИНН 575108408120 | ОГРНИП 318574900040335</p>
+            <p>Работаю в Орле с 2018 года. Соблюдаю масочный режим.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ---------- Простая "база" номеров заявок (для проверки отзывов) ----------
+        // В реальности эти номера вы будете хранить в файле на сервере и подгружать.
+        // Здесь для примера — массив, который можно пополнять через админ-панель.
+        let validOrderNumbers = ['2024-001', '2024-052', '2024-078', '2024-103', '2025-014'];
+        
+        // Массив для хранения отзывов (в реальности — база данных)
+        let reviews = [
+            { name: 'Дмитрий', text: 'Всё отлично, приехал быстро, починил компьютер за час. Спасибо!', number: '2024-052' },
+            { name: 'Елена', text: 'Переустановил Windows, настроил программы. Цена как договаривались.', number: '2024-078' }
+        ];
+
+        // Функция отображения отзывов на странице
+        function displayReviews() {
+            const list = document.getElementById('reviewsList');
+            list.innerHTML = '';
+            reviews.forEach(rev => {
+                list.innerHTML += `
+                    <div class="review-item">
+                        <strong>${rev.name}</strong>
+                        <p>${rev.text}</p>
+                        <small>Заявка №${rev.number}</small>
+                    </div>
+                `;
+            });
+        }
+
+        // Показываем отзывы при загрузке
+        displayReviews();
+
+        // ---------- Обработка формы ЗАЯВКИ (отправка на почту) ----------
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const problem = document.getElementById('problem').value;
+            
+            // Здесь должна быть реальная отправка на почту.
+            // Для примера — просто имитация успеха.
+            const messageBox = document.getElementById('orderMessage');
+            messageBox.className = 'message success';
+            messageBox.innerHTML = `Спасибо, ${name}! Заявка принята. Я свяжусь с вами в ближайшее время. Номер вашей заявки: ${Date.now().toString().slice(-6)}`;
+            
+            // В реальности тут будет fetch-запрос к вашему PHP-скрипту, который шлет почту.
+            // Например: fetch('/sendmail.php', { method: 'POST', body: new FormData(this) })
+            
+            this.reset(); // очищаем форму
+        });
+
+        // ---------- Обработка формы ОТЗЫВА с проверкой номера ----------
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('reviewName').value;
+            const text = document.getElementById('reviewText').value;
+            const number = document.getElementById('orderNumber').value.trim();
+            const messageBox = document.getElementById('reviewMessage');
+
+            // Проверяем, есть ли такой номер в списке валидных
+            if (validOrderNumbers.includes(number)) {
+                // Добавляем отзыв
+                reviews.push({ name, text, number });
+                // Удаляем номер из списка, чтобы его нельзя было использовать дважды
+                validOrderNumbers = validOrderNumbers.filter(n => n !== number);
+                
+                messageBox.className = 'message success';
+                messageBox.innerHTML = 'Спасибо! Ваш отзыв опубликован.';
+                displayReviews(); // обновляем список отзывов
+                this.reset(); // очищаем форму
+            } else {
+                messageBox.className = 'message error';
+                messageBox.innerHTML = 'Ошибка: номер заявки не найден или уже использован. Пожалуйста, проверьте номер.';
+            }
+        });
+
+        // Пример простого функционала "админки" — вы можете добавить номера заявок через консоль браузера:
+        // Например, введите в консоли: addOrderNumber('2025-111')
+        window.addOrderNumber = function(number) {
+            validOrderNumbers.push(number);
+            console.log('Номер добавлен. Текущие номера:', validOrderNumbers);
+        };
+    </script>
+<!-- Блок отзывов с Яндекс Карт -->
+<div class="section">
+    <div class="section-title">
+        <i class="fas fa-star"></i>
+        <span>Отзывы на Яндекс Картах</span>
+        <i class="fas fa-map-marked-alt" style="margin-left: auto;"></i>
+    </div>
+    
+    <!-- Виджет отзывов (замените ID организации на свой) -->
+    <div style="width:100%; min-height:400px; overflow:hidden; position:relative; margin-bottom:25px;">
+        <iframe style="width:100%; height:450px; border:2px solid #2c3e50; border-radius:16px;" 
+                src="https://yandex.ru/maps-reviews-widget/47145849096?comments">
+        </iframe>
+    </div>
+    
+    <!-- Кнопка для нового отзыва -->
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="https://yandex.ru/maps/org/npd_georginov_roman_vladimirovich/47145849096/?ll=36.064355%2C52.970758&z=12" target="_blank" 
+           style="display: inline-block; padding: 15px 35px; background: #2c3e50; 
+                  color: white; text-decoration: none; border-radius: 50px; 
+                  font-weight: 600; transition: 0.2s;">
+            <i class="fas fa-pen"></i> Оставить отзыв на Яндексе
+        </a>
+    </div>
+    
+    <!-- Пояснение -->
+    <p style="text-align: center; color: #666; margin-top: 15px; font-size: 0.9rem;">
+        * Отзывы загружаются автоматически с Яндекс Карт
+    </p>
+</div>
+</body>
+</html>

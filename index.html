@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мастер по ремонту | Светлый современный стиль</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* Профиль */
+        .profile-card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            border: 1px solid #e9eef2;
+        }
+
+        .avatar {
+            flex: 0 0 200px;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 3px solid white;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .info h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e9eef2;
+            border-radius: 40px;
+            padding: 8px 20px;
+            margin: 10px 0 15px;
+            font-weight: 500;
+            color: #334155;
+            font-size: 1rem;
+        }
+
+        .info p {
+            color: #475569;
+            max-width: 500px;
+        }
+
+        .contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 50px;
+            padding: 14px 30px;
+            color: #1e293b;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .btn i {
+            font-size: 1.2rem;
+            color: #2563eb;
+        }
+
+        .btn:hover {
+            background: #f1f5f9;
+            border-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(37,99,235,0.2);
+        }
+
+        /* Блок реквизитов справа */
+        .requisites-block {
+            flex: 0 0 auto;
+            background: #f8fafc;
+            border-radius: 25px;
+            padding: 25px;
+            border: 1px solid #e9eef2;
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .requisites-item {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .requisites-item i {
+            color: #2563eb;
+            width: 1.4rem;
+            font-size: 1.1rem;
+        }
+
+        .requisites-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Основные секции */
+        .section {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.05);
+            border: 1px solid #e9eef2;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid #e9eef2;
+            padding-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .section-title i {
+            color: #2563eb;
+            background: #e9eef2;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+        /* Форма заявки */
+        .request-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .form-group {
+            grid-column: span 2;
+        }
+
+        .form-group.half {
+            grid-column: span 1;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            color: #1e293b;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.1);
+        }
+
+        button {
+            background: #2563eb;
+            border: none;
+            color: white;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            grid-column: span 2;
+            justify-content: center;
+            border: 1px solid #2563eb;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px #2563eb;
+        }
+
+        /* Прайс-лист */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .price-card {
+            background: #f8fafc;
+            border-radius: 25px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: 0.2s;
+            border: 1px solid #e9eef2;
+        }
+
+        .price-card:hover {
+            background: white;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
+            border-color: #2563eb;
+        }
+
+        .price-icon {
+            font-size: 2.8rem;
+            color: #2563eb;
+            background: #e9eef2;
+            width: 90px;
+            height: 90px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .price-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .price-desc {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        .price-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        /* Отзывы */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .review-item {
+            background: #f8fafc;
+            border-radius: 25px;
+            padding: 25px;
+            border: 1px solid #e9eef2;
+            transition: 0.2s;
+        }
+
+        .review-item:hover {
+            border-color: #2563eb;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .review-date {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .yandex-widget {
+            width: 100%;
+            min-height: 450px;
+            overflow: hidden;
+            position: relative;
+            margin: 20px 0;
+            border-radius: 25px;
+        }
+
+        .yandex-widget iframe {
+            width: 100%;
+            height: 450px;
+            border: 2px solid #e9eef2;
+            border-radius: 25px;
+        }
+
+        .review-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.2s;
+            margin-top: 20px;
+        }
+
+        .review-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px #2563eb;
+        }
+
+        @media (max-width: 900px) {
+            .profile-card {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .requisites-block {
+                max-width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid #e9eef2;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Профиль мастера с фото, кнопками и реквизитами справа -->
+        <div class="profile-card">
+            <div class="avatar">
+                <!-- ЗАМЕНИТЕ НА СВОЁ ФОТО -->
+                <img src="https://i.ytimg.com/vi/7MSZuCmm97o/maxresdefault.jpg" alt="Мастер">
+            </div>
+            <div class="info">
+                <h1>Роман Георгинов</h1>
+                <div class="badge">🔧 Мастер по ремонту компьютеров и ноутбуков</div>
+                <p>Диагностика, чистка, замена компонентов, восстановление после залива. Работаю быстро и качественно.</p>
+                
+                <!-- Контактные кнопки: звонок и WhatsApp (замените номера) -->
+                <div class="contacts">
+                    <a href="tel:+79991234567" class="btn">
+                        <i class="fas fa-phone-alt"></i> Позвонить
+                    </a>
+                    <a href="https://wa.me/79991234567" class="btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Написать в WhatsApp
+                    </a>
+                    <!-- Если нужен Telegram, раскомментируйте:-->
+                    <a href="https://t.me/ваш_ник" class="btn" target="_blank">
+                        <i class="fab fa-telegram"></i> Telegram
+                    </a>
+                </div>
+            </div>
+
+            <!-- Блок реквизитов справа (замените на свои данные) -->
+            <div class="requisites-block">
+                <div class="requisites-item">
+                    <i class="fas fa-file-signature"></i> НПД Георгинов Роман Владимирович
+                </div>
+                <div class="requisites-item">
+                    <i class="fas fa-qrcode"></i> ИНН 123456789012
+                </div>
+                <div class="requisites-item">
+                    <i class="fas fa-building"></i> ОГРНИП 123456789012345
+                </div>
+            </div>
+        </div>
+
+        <!-- Безопасная форма заявки (отправка в Telegram через Cloudflare Worker) -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-paper-plane"></i>
+                <span>Оставить заявку</span>
+            </div>
+            <form id="secureRequestForm">
+                <div class="request-form">
+                    <div class="form-group half">
+                        <input type="text" id="secureName" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group half">
+                        <input type="tel" id="securePhone" placeholder="Телефон" required>
+                    </div>
+                    <div class="form-group half">
+                        <input type="email" id="secureEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group half">
+                        <input type="text" id="secureDevice" placeholder="Устройство" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="secureDesc" placeholder="Опишите проблему..." rows="4" required></textarea>
+                    </div>
+                    <button type="submit" id="secureSubmitBtn">
+                        <i class="fas fa-bolt"></i> Отправить заявку
+                    </button>
+                </div>
+            </form>
+            <div id="secureResult" style="text-align: center; margin-top: 20px; color: #2563eb;"></div>
+        </div>
+
+        <!-- Прайс-лист -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-tags"></i>
+                <span>Прайс-лист</span>
+            </div>
+            <div class="price-grid">
+                <div class="price-card">
+                    <div class="price-icon"><i class="fas fa-stethoscope"></i></div>
+                    <div class="price-title">Диагностика</div>
+                    <div class="price-desc">Бесплатно при ремонте</div>
+                    <div class="price-value">0 ₽</div>
+                </div>
+                <div class="price-card">
+                    <div class="price-icon"><i class="fas fa-wind"></i></div>
+                    <div class="price-title">Чистка от пыли</div>
+                    <div class="price-desc">+ замена термопасты</div>
+                    <div class="price-value">1 000 ₽</div>
+                </div>
+                <div class="price-card">
+                    <div class="price-icon"><i class="fas fa-laptop"></i></div>
+                    <div class="price-title">Замена экрана</div>
+                    <div class="price-desc">Любой ноутбук</div>
+                    <div class="price-value">от 2 500 ₽</div>
+                </div>
+                <div class="price-card">
+                    <div class="price-icon"><i class="fas fa-water"></i></div>
+                    <div class="price-title">После залива</div>
+                    <div class="price-desc">Чистка, восстановление</div>
+                    <div class="price-value">от 2 000 ₽</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Блок отзывов с Яндекс Карт -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-star"></i>
+                <span>Отзывы на Яндекс Картах</span>
+            </div>
+            
+            <!-- Виджет отзывов (замените ID организации) -->
+            <div class="yandex-widget">
+                <iframe src="https://yandex.ru/maps-reviews-widget/47145849096?comments"></iframe>
+            </div>
+            
+            <!-- Кнопка для нового отзыва (замените ссылку на свою карточку) -->
+            <div style="text-align: center;">
+                <a href="https://yandex.ru/maps/org/npd_georginov_roman_vladimirovich/47145849096/?ll=36.064355%2C52.970758&z=12" target="_blank" class="review-button">
+                    <i class="fas fa-pen"></i> Оставить отзыв на Яндексе
+                </a>
+            </div>
+            <p style="text-align: center; color: #64748b; margin-top: 15px;">
+                * Отзывы загружаются автоматически с Яндекс Карт
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-tools"></i> Алексей Волков, мастер по ремонту <i class="fas fa-tools"></i>
+    </footer>
+
+    <script>
+        (function() {
+            // ⚡ НАСТРОЙКА: замените URL на адрес вашего Cloudflare Worker
+            const WORKER_URL = 'https://repare-telegrambot.lisarphp.workers.dev';
+            
+            const form = document.getElementById('secureRequestForm');
+            const resultDiv = document.getElementById('secureResult');
+            const submitBtn = document.getElementById('secureSubmitBtn');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Собираем данные
+                const name = document.getElementById('secureName').value.trim();
+                const phone = document.getElementById('securePhone').value.trim();
+                const email = document.getElementById('secureEmail').value.trim();
+                const device = document.getElementById('secureDevice').value.trim();
+                const desc = document.getElementById('secureDesc').value.trim();
+                
+                if (!name || !phone || !email || !device || !desc) {
+                    resultDiv.innerHTML = '<span style="color:#dc2626;">❌ Заполните все поля</span>';
+                    return;
+                }
+                
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+                
+                try {
+                    const response = await fetch(WORKER_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, phone, email, device, desc })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (response.ok && data.success) {
+                        resultDiv.innerHTML = '<span style="color:#2563eb;">✅ Заявка отправлена! Мы свяжемся с вами</span>';
+                        form.reset();
+                    } else {
+                        resultDiv.innerHTML = '<span style="color:#dc2626;">❌ Ошибка отправки. Попробуйте позже</span>';
+                    }
+                } catch (error) {
+                    resultDiv.innerHTML = '<span style="color:#dc2626;">❌ Ошибка соединения</span>';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-bolt"></i> Отправить заявку';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

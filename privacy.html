@@ -35,15 +35,18 @@
             font-size: 2.5rem;
             color: #0f172a;
             margin-bottom: 20px;
+            word-break: break-word; /* ← перенос длинных слов */
         }
         h2 {
             font-size: 1.5rem;
             color: #2563eb;
             margin: 25px 0 15px;
+            word-break: break-word;
         }
         p {
             margin-bottom: 15px;
             color: #334155;
+            word-break: break-word;
         }
         a {
             color: #2563eb;
@@ -72,6 +75,16 @@
             color: #64748b;
             border-top: 1px solid #e9eef2;
             margin-top: 20px;
+        }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem; /* помельче */
+            }
+            .section {
+                padding: 25px; /* уменьшим отступы */
+            }
         }
     </style>
 </head>

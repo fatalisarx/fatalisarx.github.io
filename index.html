@@ -128,9 +128,12 @@
             box-shadow: 0 10px 20px -5px rgba(37,99,235,0.2);
         }
 
-        /* Кнопка для копирования номера (не ссылка) */
+        /* Кнопка для копирования номера (без выделения) */
         .btn-phone-copy {
-            user-select: all;
+            user-select: none; /* запрещаем выделение текста */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         /* На мобильных устройствах — одна колонка */

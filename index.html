@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мастер по ремонту | Светлый современный стиль</title>
     <!-- Font Awesome 6 -->
@@ -67,6 +67,7 @@
             color: #0f172a;
             margin-bottom: 10px;
             line-height: 1.2;
+            word-break: break-word;
         }
 
         .badge {
@@ -137,12 +138,14 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            word-break: break-word;
         }
 
         .requisites-item i {
             color: #2563eb;
             width: 1.4rem;
             font-size: 1.1rem;
+            flex-shrink: 0;
         }
 
         .requisites-item:last-child {
@@ -169,6 +172,7 @@
             border-bottom: 2px solid #e9eef2;
             padding-bottom: 20px;
             color: #0f172a;
+            word-break: break-word;
         }
 
         .section-title i {
@@ -176,9 +180,10 @@
             background: #e9eef2;
             padding: 10px;
             border-radius: 15px;
+            flex-shrink: 0;
         }
 
-        /* Форма заявки */
+        /* Форма заявки (без email и device) */
         .request-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -276,12 +281,14 @@
             font-weight: 600;
             margin-bottom: 8px;
             color: #0f172a;
+            word-break: break-word;
         }
 
         .price-desc {
             font-size: 0.95rem;
             color: #475569;
             margin-bottom: 15px;
+            word-break: break-word;
         }
 
         .price-value {
@@ -326,6 +333,7 @@
         .review-text {
             color: #334155;
             line-height: 1.5;
+            word-break: break-word;
         }
 
         .yandex-widget {
@@ -362,6 +370,7 @@
             box-shadow: 0 10px 25px -5px #2563eb;
         }
 
+        /* Адаптация для мобильных */
         @media (max-width: 900px) {
             .profile-card {
                 flex-direction: column;
@@ -373,12 +382,44 @@
             }
         }
 
+        @media (max-width: 600px) {
+            .section {
+                padding: 25px;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .request-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group.half {
+                grid-column: span 2;
+            }
+            button {
+                padding: 14px 25px;
+                font-size: 1rem;
+            }
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         footer {
             text-align: center;
             padding: 30px;
             color: #64748b;
             border-top: 1px solid #e9eef2;
             margin-top: 20px;
+        }
+        footer a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -395,21 +436,21 @@
                 <div class="badge">🔧 Мастер по ремонту компьютеров и ноутбуков</div>
                 <p>Диагностика, чистка, замена компонентов, восстановление после залива. Работаю быстро и качественно.</p>
                 
-                <!-- Контактные кнопки: звонок и WhatsApp (замените номера) -->
+                <!-- Контактные кнопки: звонок, MAX, Telegram -->
                 <div class="contacts">
-    <a href="tel:+79038828486" class="btn">
-        <i class="fas fa-phone-alt"></i> Позвонить
-    </a>
-    <a href="https://max.ru/u/f9LHodD0cOLNlX7vd7hMTv9EJf6mK2YAzCghtFn9w3yBmNz2xjHoDTDLGJM" class="btn" target="_blank">
-        <i class="fas fa-comment"></i> Написать в MAX
-    </a>
-    <a href="https://t.me/fatalisarx" class="btn" target="_blank">
-        <i class="fab fa-telegram"></i> Telegram
-    </a>
-</div>
+                    <a href="tel:+79038828486" class="btn">
+                        <i class="fas fa-phone-alt"></i> Позвонить
+                    </a>
+                    <a href="https://max.ru/u/f9LHodD0cOLNlX7vd7hMTv9EJf6mK2YAzCghtFn9w3yBmNz2xjHoDTDLGJM" class="btn" target="_blank">
+                        <i class="fas fa-comment"></i> Написать в MAX
+                    </a>
+                    <a href="https://t.me/fatalisarx" class="btn" target="_blank">
+                        <i class="fab fa-telegram"></i> Telegram
+                    </a>
+                </div>
             </div>
 
-            <!-- Блок реквизитов справа (замените на свои данные) -->
+            <!-- Блок реквизитов справа -->
             <div class="requisites-block">
                 <div class="requisites-item">
                     <i class="fas fa-file-signature"></i> НПД Георгинов Роман Владимирович
@@ -420,7 +461,7 @@
             </div>
         </div>
 
-        <!-- Безопасная форма заявки (отправка в Telegram через Cloudflare Worker) -->
+        <!-- Форма заявки (только имя, телефон, описание) -->
         <div class="section">
             <div class="section-title">
                 <i class="fas fa-paper-plane"></i>
@@ -478,33 +519,33 @@
                 </div>
             </div>
         </div>
-        <!-- Блок для скачивания программы удалённого доступа -->
-<div class="section">
-    <div class="section-title">
-        <i class="fas fa-download"></i>
-        <span>Удалённая помощь</span>
-    </div>
-    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px;">
-        <div style="flex: 1; min-width: 250px;">
-            <h3 style="font-size: 1.8rem; color: #2563eb; margin-bottom: 15px;">Мой Ассистент</h3>
-            <p style="margin-bottom: 20px;">Для быстрого удалённого подключения я использую программу «Мой Ассистент». Скачайте её заранее, чтобы я мог помочь вам с любой проблемой на вашем компьютере.</p>
-            <ul style="margin-bottom: 25px; list-style: none;">
-                <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #2563eb; margin-right: 10px;"></i>Бесплатно для клиентов</li>
-                <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #2563eb; margin-right: 10px;"></i>Не требует установки (версия "Быстрый старт")</li>
-                <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #2563eb; margin-right: 10px;"></i>Работает на Windows, Linux, macOS</li>
-            </ul>
-            <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                <a href="https://мойассистент.рф/скачать" target="_blank" class="btn" style="background: #2563eb; color: white; border: none;">
-                    <i class="fas fa-download"></i> Скачать для Windows
-                </a>
-                <a href="https://мойассистент.рф/скачать" target="_blank" class="btn">
-                    <i class="fas fa-download"></i> Другие версии
-                </a>
+
+        <!-- Блок для скачивания программы удалённого доступа (Мой Ассистент) -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-download"></i>
+                <span>Удалённая помощь</span>
             </div>
-            <p style="margin-top: 15px; font-size: 0.85rem; color: #64748b;">* Ссылка ведёт на официальный сайт программы</p>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="font-size: 1.8rem; color: #2563eb; margin-bottom: 15px;">Мой Ассистент</h3>
+                <p style="margin-bottom: 20px;">Для быстрого удалённого подключения я использую программу «Мой Ассистент». Скачайте её заранее, чтобы я мог помочь вам с любой проблемой на вашем компьютере.</p>
+                <ul style="margin-bottom: 25px; list-style: none;">
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #2563eb; margin-right: 10px;"></i>Бесплатно для клиентов</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #2563eb; margin-right: 10px;"></i>Не требует установки (версия "Быстрый старт")</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #2563eb; margin-right: 10px;"></i>Работает на Windows, Linux, macOS</li>
+                </ul>
+                <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                    <a href="https://мойассистент.рф/скачать" target="_blank" class="btn" style="background: #2563eb; color: white; border: none;">
+                        <i class="fas fa-download"></i> Скачать для Windows
+                    </a>
+                    <a href="https://мойассистент.рф/скачать" target="_blank" class="btn">
+                        <i class="fas fa-download"></i> Другие версии
+                    </a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.85rem; color: #64748b;">* Ссылка ведёт на официальный сайт программы</p>
+            </div>
         </div>
-    </div>
-</div>
+
         <!-- Блок отзывов с Яндекс Карт -->
         <div class="section">
             <div class="section-title">
@@ -512,16 +553,9 @@
                 <span>Отзывы на Яндекс Картах</span>
             </div>
             
-            <!-- Виджет отзывов (замените ID организации) -->
+            <!-- Виджет отзывов -->
             <div class="yandex-widget">
                 <iframe src="https://yandex.ru/maps-reviews-widget/47145849096?comments"></iframe>
-            </div>
-            
-            <!-- Кнопка для нового отзыва (замените ссылку на свою карточку) -->
-            <div style="text-align: center;">
-                <a href="https://yandex.ru/maps/org/npd_georginov_roman_vladimirovich/47145849096/?ll=36.064355%2C52.970758&z=12" target="_blank" class="review-button">
-                    <i class="fas fa-pen"></i> Оставить отзыв на Яндексе
-                </a>
             </div>
             <p style="text-align: center; color: #64748b; margin-top: 15px;">
                 * Отзывы загружаются автоматически с Яндекс Карт
@@ -530,7 +564,7 @@
     </div>
 
     <footer>
-		<i class="fas fa-tools"></i> НПД Георгинов Роман Владимирович | <a href="privacy.html">Политика конфиденциальности</a>
+        <i class="fas fa-tools"></i> НПД Георгинов Роман Владимирович | <a href="privacy.html">Политика конфиденциальности</a>
     </footer>
 
     <script>
@@ -545,15 +579,12 @@
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                // Собираем данные
                 const name = document.getElementById('secureName').value.trim();
                 const phone = document.getElementById('securePhone').value.trim();
-                const email = document.getElementById('secureEmail').value.trim();
-                const device = document.getElementById('secureDevice').value.trim();
                 const desc = document.getElementById('secureDesc').value.trim();
                 
-                if (!name || !phone || !email || !device || !desc) {
-                    resultDiv.innerHTML = '<span style="color:#dc2626;">❌ Заполните все поля</span>';
+                if (!name || !phone || !desc) {
+                    resultDiv.innerHTML = '<span style="color:#dc2626;">❌ Заполните имя, телефон и описание</span>';
                     return;
                 }
                 
@@ -561,16 +592,17 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
                 
                 try {
+                    // Отправляем только необходимые поля (email и device не нужны)
                     const response = await fetch(WORKER_URL, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ name, phone, email, device, desc })
+                        body: JSON.stringify({ name, phone, desc })
                     });
                     
                     const data = await response.json();
                     
                     if (response.ok && data.success) {
-                        resultDiv.innerHTML = '<span style="color:#2563eb;">✅ Заявка отправлена! Мы свяжемся с вами</span>';
+                        resultDiv.innerHTML = '<span style="color:#2563eb;">✅ Заявка отправлена! Я скоро свяжусь с вами</span>';
                         form.reset();
                     } else {
                         resultDiv.innerHTML = '<span style="color:#dc2626;">❌ Ошибка отправки. Попробуйте позже</span>';

@@ -2,6 +2,20 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107148059', 'ym');
+
+        ym(107148059, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/107148059" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ремонт компьютеров в Орле | Роман</title>
@@ -27,7 +41,6 @@
             padding: 30px 20px;
         }
 
-        /* Профиль */
         .profile-card {
             background: white;
             border-radius: 30px;
@@ -86,7 +99,6 @@
             max-width: 500px;
         }
 
-        /* Контактные кнопки — сетка 2x2 на десктопе, 1 колонка на мобильных */
         .contacts {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -128,22 +140,19 @@
             box-shadow: 0 10px 20px -5px rgba(37,99,235,0.2);
         }
 
-        /* Кнопка для копирования номера (без выделения) */
         .btn-phone-copy {
-            user-select: none; /* запрещаем выделение текста */
+            user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
         }
 
-        /* На мобильных устройствах — одна колонка */
         @media (max-width: 600px) {
             .contacts {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Блок реквизитов справа */
         .requisites-block {
             flex: 0 0 auto;
             background: #f8fafc;
@@ -175,7 +184,6 @@
             margin-bottom: 0;
         }
 
-        /* Основные секции */
         .section {
             background: white;
             border-radius: 30px;
@@ -206,7 +214,6 @@
             flex-shrink: 0;
         }
 
-        /* Форма заявки (без email и device) */
         .request-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -263,7 +270,6 @@
             box-shadow: 0 10px 25px -5px #2563eb;
         }
 
-        /* Прайс-лист */
         .price-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -280,7 +286,7 @@
             border: 1px solid #e9eef2;
             display: flex;
             flex-direction: column;
-            height: 100%; /* растягиваем на всю высоту ячейки сетки */
+            height: 100%;
         }
 
         .price-card:hover {
@@ -321,10 +327,9 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: #2563eb;
-            margin-top: auto; /* прижимаем цену к нижнему краю карточки */
+            margin-top: auto;
         }
 
-        /* Отзывы */
         .reviews-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -397,7 +402,6 @@
             box-shadow: 0 10px 25px -5px #2563eb;
         }
 
-        /* Адаптация для мобильных */
         @media (max-width: 900px) {
             .profile-card {
                 flex-direction: column;
@@ -449,7 +453,6 @@
             text-decoration: underline;
         }
 
-        /* ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ ===== */
         .scroll-item {
             opacity: 0;
             transform: translateY(30px);
@@ -462,13 +465,11 @@
             box-shadow: 0 30px 45px -15px rgba(37,99,235,0.25);
         }
 
-        /* Эффект масштабирования при полной видимости */
         .scroll-item.visible.scale-active {
             transform: translateY(0) scale(1.02);
             transition: transform 0.3s ease;
         }
 
-        /* Для пользователей, которые предпочитают уменьшенную анимацию */
         @media (prefers-reduced-motion: reduce) {
             .scroll-item {
                 transition: none !important;
@@ -480,35 +481,45 @@
 </head>
 <body>
     <div class="container">
-        <!-- Профиль мастера с фото, кнопками и реквизитами справа -->
         <div class="profile-card scroll-item">
             <div class="avatar">
-                <!-- ЗАМЕНИТЕ НА СВОЁ ФОТО -->
-                <img src="https://img.freepik.com/premium-vector/young-man-standing-with-hands-pockets-illustration_98402-171190.jpg?semt=ais_hybrid&w=740&q=80" alt="Мастер">
+                <!-- Фото мастера: файл portrait.webp должен лежать в корневой папке сайта -->
+                <img src="portrait.webp" alt="Роман Георгинов, мастер по ремонту компьютеров" width="200" height="200">
             </div>
             <div class="info">
                 <h1>Роман Георгинов</h1>
                 <div class="badge">🔧 Мастер по ремонту и настройке компьютеров</div>
-                <p>Работаю прозрачно, все данные обо мне отображены справа, вы всегда можете проверить. Диагностика, ремонт, установка windows, установка программ, чистка от пыли, замена термопасты, сборка компьютеров.</p>
+                <p>
+                    <i class="fas fa-tools" style="color: #2563eb; margin-right: 5px;"></i> 
+                    Выезжаю на дом. Если ремонт на месте невозможен — заберу технику с сохранной распиской. Выдаю чек и гарантийный талон.<br>
+                    <i class="fas fa-calendar-alt" style="color: #2563eb; margin-right: 5px;"></i> 
+                    Опыт работы с 2018 года.<br>
+                    <i class="fas fa-shield-alt" style="color: #2563eb; margin-right: 5px;"></i> 
+                    Работаю абсолютно прозрачно: мой ИНН и ФИО видны на сайте, цены фиксированы и не меняются после начала работ.<br>
+                    <i class="fas fa-star" style="color: #2563eb; margin-right: 5px;"></i> 
+                    Внизу страницы можно посмотреть отзывы с Яндекс.Карт.
+                </p>
                 
-                <!-- Контактные кнопки: сетка 2x2 -->
                 <div class="contacts">
-                    <a href="tel:+79038828486" class="btn">
+                    <!-- Кнопка Позвонить + цель phone_click -->
+                    <a href="tel:+79038828486" class="btn" onclick="ym(107148059,'reachGoal','phone_click'); return true;">
                         <i class="fas fa-phone-alt"></i> Позвонить
                     </a>
+                    <!-- Кнопка копирования номера + цель copy_phone (вызов внутри функции) -->
                     <span class="btn btn-phone-copy" onclick="copyPhoneNumber()">
                         <i class="fas fa-copy"></i> +7 903 882-84-86
                     </span>
-                    <a href="https://t.me/fatalisarx" class="btn" target="_blank">
+                    <!-- Кнопка Telegram + цель tg_click -->
+                    <a href="https://t.me/fatalisarx" class="btn" target="_blank" onclick="ym(107148059,'reachGoal','tg_click'); return true;">
                         <i class="fab fa-telegram"></i> Написать в Telegram
                     </a>
-                    <a href="https://max.ru/u/f9LHodD0cOLNlX7vd7hMTv9EJf6mK2YAzCghtFn9w3yBmNz2xjHoDTDLGJM" class="btn" target="_blank">
+                    <!-- Кнопка MAX + цель max_click -->
+                    <a href="https://max.ru/u/f9LHodD0cOLNlX7vd7hMTv9EJf6mK2YAzCghtFn9w3yBmNz2xjHoDTDLGJM" class="btn" target="_blank" onclick="ym(107148059,'reachGoal','max_click'); return true;">
                         <i class="fas fa-comment"></i> Написать в MAX
                     </a>
                 </div>
             </div>
 
-            <!-- Блок реквизитов справа -->
             <div class="requisites-block">
                 <div class="requisites-item">
                     <i class="fas fa-file-signature"></i> НПД Георгинов Роман Владимирович
@@ -519,7 +530,6 @@
             </div>
         </div>
 
-        <!-- Форма заявки (только имя, телефон, описание) -->
         <div class="section scroll-item">
             <div class="section-title">
                 <i class="fas fa-paper-plane"></i>
@@ -544,7 +554,6 @@
             <div id="secureResult" style="text-align: center; margin-top: 20px; color: #2563eb;"></div>
         </div>
 
-        <!-- Прайс-лист -->
         <div class="section scroll-item">
             <div class="section-title">
                 <i class="fas fa-tags"></i>
@@ -578,7 +587,6 @@
             </div>
         </div>
 
-        <!-- Блок для скачивания программы удалённого доступа (Мой Ассистент) -->
         <div class="section scroll-item">
             <div class="section-title">
                 <i class="fas fa-download"></i>
@@ -604,19 +612,16 @@
             </div>
         </div>
 
-        <!-- Блок отзывов с Яндекс Карт -->
         <div class="section scroll-item">
             <div class="section-title">
                 <i class="fas fa-star"></i>
                 <span>Отзывы на Яндекс Картах</span>
             </div>
             
-            <!-- Виджет отзывов -->
             <div class="yandex-widget">
-                <iframe src="https://yandex.ru/maps-reviews-widget/47145849096?comments"></iframe>
+                <iframe src="https://yandex.ru/maps-reviews-widget/47145849096?comments" loading="lazy"></iframe>
             </div>
             
-            <!-- Кнопка для нового отзыва -->
             <div style="text-align: center;">
                 <a href="https://yandex.ru/maps/org/npd_georginov_roman_vladimirovich/47145849096/reviews?utm_source=maps-reviews-widget&utm_medium=reviews&utm_content=add_review&add-review" target="_blank" class="review-button">
                     <i class="fas fa-pen"></i> Оставить отзыв на Яндексе
@@ -633,27 +638,31 @@
     </footer>
 
     <script>
-        // Функция копирования номера телефона
+        // Функция копирования номера телефона с отправкой цели copy_phone
         function copyPhoneNumber() {
             const phone = '+79038828486';
             navigator.clipboard.writeText(phone).then(() => {
+                if (typeof ym !== 'undefined') {
+                    ym(107148059, 'reachGoal', 'copy_phone');
+                }
                 alert('Номер скопирован: ' + phone);
             }).catch(() => {
-                // fallback для старых браузеров
                 const textarea = document.createElement('textarea');
                 textarea.value = phone;
                 document.body.appendChild(textarea);
                 textarea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textarea);
+                if (typeof ym !== 'undefined') {
+                    ym(107148059, 'reachGoal', 'copy_phone');
+                }
                 alert('Номер скопирован: ' + phone);
             });
         }
 
-        // Скрипт отправки формы в Telegram (без email и device)
+        // Скрипт отправки формы в Telegram с отправкой цели form_submit
         (function() {
             const WORKER_URL = 'https://repare-telegrambot.lisarphp.workers.dev';
-            
             const form = document.getElementById('secureRequestForm');
             const resultDiv = document.getElementById('secureResult');
             const submitBtn = document.getElementById('secureSubmitBtn');
@@ -683,6 +692,9 @@
                     const data = await response.json();
                     
                     if (response.ok && data.success) {
+                        if (typeof ym !== 'undefined') {
+                            ym(107148059, 'reachGoal', 'form_submit');
+                        }
                         resultDiv.innerHTML = '<span style="color:#2563eb;">✅ Заявка отправлена! Я скоро свяжусь с вами</span>';
                         form.reset();
                     } else {
@@ -697,7 +709,7 @@
             });
         })();
 
-        // Intersection Observer для анимации появления (один раз)
+        // Intersection Observer для анимации
         document.addEventListener('DOMContentLoaded', function() {
             const items = document.querySelectorAll('.scroll-item');
             
@@ -705,7 +717,6 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // После первого появления отключаем наблюдение для этого элемента
                         appearObserver.unobserve(entry.target);
                     }
                 });
@@ -718,7 +729,6 @@
                 appearObserver.observe(item);
             });
 
-            // Intersection Observer для эффекта масштабирования (постоянно)
             const scaleObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -728,7 +738,7 @@
                     }
                 });
             }, {
-                threshold: 0.8 // когда 80% элемента видимо, считаем его "полностью на экране"
+                threshold: 0.8
             });
 
             items.forEach(item => {

@@ -402,14 +402,35 @@
             box-shadow: 0 10px 25px -5px #2563eb;
         }
 
+        /* Десктопные настройки (от 901px) */
+        @media (min-width: 901px) {
+            .avatar {
+                flex: 0 0 280px; /* увеличили фото */
+            }
+            .info {
+                flex: 2; /* отодвигаем реквизиты правее */
+            }
+            .requisites-block {
+                flex: 0 0 auto;
+                max-width: 280px;
+            }
+        }
+
+        /* Мобильные настройки (до 900px) */
         @media (max-width: 900px) {
             .profile-card {
                 flex-direction: column;
                 align-items: stretch;
             }
+            .avatar {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+                flex: 0 0 auto;
+            }
             .requisites-block {
                 max-width: 100%;
-                margin-top: 10px;
+                margin-top: 20px;
             }
         }
 
@@ -483,8 +504,7 @@
     <div class="container">
         <div class="profile-card scroll-item">
             <div class="avatar">
-                <!-- Фото мастера: файл portrait.webp должен лежать в корневой папке сайта -->
-                <img src="portrait.webp" alt="Роман Георгинов, мастер по ремонту компьютеров" width="200" height="200">
+                <img src="portrait.webp" alt="Роман Георгинов, мастер по ремонту компьютеров" width="280" height="280">
             </div>
             <div class="info">
                 <h1>Роман Георгинов</h1>
@@ -501,19 +521,15 @@
                 </p>
                 
                 <div class="contacts">
-                    <!-- Кнопка Позвонить + цель phone_click -->
                     <a href="tel:+79038828486" class="btn" onclick="ym(107148059,'reachGoal','phone_click'); return true;">
                         <i class="fas fa-phone-alt"></i> Позвонить
                     </a>
-                    <!-- Кнопка копирования номера + цель copy_phone (вызов внутри функции) -->
                     <span class="btn btn-phone-copy" onclick="copyPhoneNumber()">
                         <i class="fas fa-copy"></i> +7 903 882-84-86
                     </span>
-                    <!-- Кнопка Telegram + цель tg_click -->
                     <a href="https://t.me/fatalisarx" class="btn" target="_blank" onclick="ym(107148059,'reachGoal','tg_click'); return true;">
                         <i class="fab fa-telegram"></i> Написать в Telegram
                     </a>
-                    <!-- Кнопка MAX + цель max_click -->
                     <a href="https://max.ru/u/f9LHodD0cOLNlX7vd7hMTv9EJf6mK2YAzCghtFn9w3yBmNz2xjHoDTDLGJM" class="btn" target="_blank" onclick="ym(107148059,'reachGoal','max_click'); return true;">
                         <i class="fas fa-comment"></i> Написать в MAX
                     </a>

@@ -96,7 +96,7 @@
 
         .info p {
             color: #475569;
-            max-width: 500px;
+            max-width: 580px; /* увеличено для укладки текста в 2 строки */
         }
 
         .contacts {
@@ -157,7 +157,7 @@
             flex: 0 0 auto;
             background: #f8fafc;
             border-radius: 25px;
-            padding: 25px;
+            padding: 20px;
             border: 1px solid #e9eef2;
             max-width: 320px;
             width: 100%;
@@ -408,11 +408,12 @@
                 flex: 0 0 280px; /* увеличили фото */
             }
             .info {
-                flex: 2; /* отодвигаем реквизиты правее */
+                flex: 2;
             }
             .requisites-block {
                 flex: 0 0 auto;
-                max-width: 280px;
+                max-width: 260px; /* уменьшена ширина блока реквизитов */
+                padding: 20px;   /* уменьшены отступы */
             }
         }
 
@@ -498,13 +499,23 @@
                 transform: none !important;
             }
         }
+
+        /* Защита фотографии от выделения и скачивания */
+        .avatar img {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-touch-callout: none;
+            pointer-events: auto;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="profile-card scroll-item">
             <div class="avatar">
-                <img src="portrait.webp" alt="Роман Георгинов, мастер по ремонту компьютеров" width="280" height="280">
+                <img src="portrait.webp" alt="Роман Георгинов, мастер по ремонту компьютеров" width="280" height="280" draggable="false" ondragstart="return false" oncontextmenu="return false">
             </div>
             <div class="info">
                 <h1>Роман Георгинов</h1>
